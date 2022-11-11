@@ -1,0 +1,13 @@
+CREATE DATABASE IF NOT EXISTS dungou CHARACTER SET utf8 COLLATE utf8_unicode_ci;
+
+use dungou;
+
+CREATE TABLE IF NOT EXISTS user (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(32),
+    password VARCHAR(255),
+    phone VARCHAR(16),
+    email VARCHAR(64),
+    role VARCHAR(16),
+    registerdate DATETIME DEFAULT CURRENT_TIMESTAMP
+);
