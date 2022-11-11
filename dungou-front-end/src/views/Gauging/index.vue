@@ -1,4 +1,4 @@
-<!-- 盾构选型 -->
+<!-- 适应性检测 -->
 <template>
     <div class="container">
         <div class="a"></div>

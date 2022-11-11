@@ -94,6 +94,7 @@ export default {
     justify-content: center;
     width: 100%;
     height: 100%;
+    min-height: 500px;
     background-image: linear-gradient( 135deg, #3C8CE7 10%, #00EAFF 100%);
     .title {
         display: flex;
