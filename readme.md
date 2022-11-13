@@ -18,10 +18,28 @@ curl -X POST -d '{"email":"guozheng_huang@163.com","password":"123456"}' http://
 # 后端开发
 ## 购买配置云服务器和域名
 ## 安装linux操作系统和软件
-## 安装和配置mysql/redis数据库
-
+```shell
+sudo apt install redis-server
+sudo apt install nginx
+```
+## 安装网络服务
+```shell
+sudo apt install trojan
+sudo vim /etc/trojan/config.json
+sudo apt install proxychains-ng
+sudo vim /etc/proxychains4.conf
+  socks5 127.0.0.1 1080
+proxychains4 curl ifconfig.me
+```
 ## 安装python环境和库
 ```shell
+python3 -m venv venv
+. venv/bin/activate
 pip install -r requirements.txt
 ```
+
 # 前端开发
+## 安装node环境
+```shell
+curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+```
