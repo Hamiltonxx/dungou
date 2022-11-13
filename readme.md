@@ -1,4 +1,5 @@
 # 盾构 - 地层适应性
+地址为 http://dungou.cirray.cn
 
 # WEB接口
 正式服地址为 http://sh1.cirray.cn:9000
@@ -42,4 +43,6 @@ pip install -r requirements.txt
 ## 安装node环境
 ```shell
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+nvm ls-remote
+nvm install 19.0.1
 ```
