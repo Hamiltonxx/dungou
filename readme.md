@@ -2,7 +2,7 @@
 地址为 http://dungou.cirray.cn
 
 # WEB接口
-正式服地址为 http://sh1.cirray.cn:9000
+正式服地址为 http://sh1.cirray.cn:9000  
 模型训练相关地址为 https://dev.yijianar.com:8441
 ## 获取验证码
 ```shell
@@ -26,7 +26,10 @@ curl -F filename=@abc_train.csv -F project_name=aaa https://dev.yijianar.com:844
 curl https://dev.yijianar.com:8441/datafile/csv_6/aaa_train.csv
 ```
 ## 训练进度查询
-开始训练后，前端作5秒一次的进度轮询。
+开始训练后，前端作5秒一次的进度轮询。 以project_name为参数
+```shell
+curl https://dev.yijianar.com:8441/progress/aaa
+```
 
 # 后端开发
 ## 购买配置云服务器和域名
