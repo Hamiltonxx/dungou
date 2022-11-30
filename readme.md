@@ -28,8 +28,8 @@ curl -X POST -d '{"filepath":"/data/csv_6/aaa_train.csv"}' https://dev.yijianar.
 # 下载图片
 curl -X POST -d '{"filepath":"/pics/abc_evaluate.jpg"}' https://dev.yijianar.com:8441/file
 ```
-## 训练进度查询
-开始训练后，前端作5秒一次的进度轮询。当进度为100%时停止轮询。
+## 进度查询
+开始训练/评价任务后，前端作5秒一次的进度轮询。当进度为100%时停止轮询。
 ```shell
 # 训练进度
 curl -X POST -d '{"project_name":"aaa","task":"train"}' https://dev.yijianar.com:8441/progress
