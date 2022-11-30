@@ -20,15 +20,21 @@ curl -X POST -d '{"email":"guozheng_huang@163.com","password":"123456"}' http://
 ```shell
 curl -F filename=@abc_train.csv -F project_name=aaa https://dev.yijianar.com:8441/Upload_Train
 ```
-可能需要等待两分钟训练模型。结果会返回 /csv_6/aaa_train.csv. 自行拼接成 https://dev.yijianar.com:8441/datafile/csv_6/aaa_train.csv 下载
-## 下载预处理后文件
+可能需要等待两分钟训练模型。结果会返回 /data/csv_6/aaa_train.csv. 
+## 下载文件
 ```shell
-curl https://dev.yijianar.com:8441/datafile/csv_6/aaa_train.csv
+# 下载csv
+curl -X POST -d '{"filepath":"/data/csv_6/aaa_train.csv"}' https://dev.yijianar.com:8441/file
+# 下载图片
+curl -X POST -d '{"filepath":"/pics/abc_evaluate.jpg"}' https://dev.yijianar.com:8441/file
 ```
 ## 训练进度查询
-开始训练后，前端作5秒一次的进度轮询。 以project_name为参数
+开始训练后，前端作5秒一次的进度轮询。当进度为100%时停止轮询。
 ```shell
-curl https://dev.yijianar.com:8441/progress/aaa
+# 训练进度
+curl -X POST -d '{"project_name":"aaa","task":"train"}' https://dev.yijianar.com:8441/progress
+# 评价进度
+curl -X POST -d '{"project_name":"aaa","task":"evaluate"}' https://dev.yijianar.com:8441/progress
 ```
 
 # 后端开发
