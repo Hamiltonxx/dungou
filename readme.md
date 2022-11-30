@@ -36,6 +36,10 @@ curl -X POST -d '{"project_name":"aaa","task":"train"}' https://dev.yijianar.com
 # 评价进度
 curl -X POST -d '{"project_name":"aaa","task":"evaluate"}' https://dev.yijianar.com:8441/progress
 ```
+## 适应性评价
+```shell
+curl -F filename=@pingjia.csv -F project_name=abc https://dev.yijianar.com:8441/SGSI_Evaluate
+```
 
 # 后端开发
 ## 购买配置云服务器和域名
