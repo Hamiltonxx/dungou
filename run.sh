@@ -1,2 +1,2 @@
 pkill -f run.py
-nohup ~/projects/venv/bin/python run.py >> ~/logs/dungou.log &
+nohup ~/projects/venv/bin/python apprun.py >> ~/logs/dungou.log &
