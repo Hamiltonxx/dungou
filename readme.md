@@ -41,11 +41,18 @@ curl -X POST -d '{"filepath":"/pics/abc_evaluate.jpg"}' https://dev.yijianar.com
 curl -X POST -d '{"project_name":"aaa","task":"train"}' https://dev.yijianar.com:8441/progress
 # 评价进度
 curl -X POST -d '{"project_name":"aaa","task":"evaluate"}' https://dev.yijianar.com:8441/progress
+# 预测进度
+curl -X POST -d '{"project_name":"abc","task":"predict"}' https://dev.yijianar.com:8441/progress
 ```
 ## 适应性评价
 ```shell
 curl -F filename=@pingjia.csv -F project_name=abc https://dev.yijianar.com:8441/SGSI_Evaluate
 ```
+## 适应性预测
+```shell
+curl -F filename=@312.csv -F project_name=abc -F Do=6 -F Di=5.25 -F Dc=6.14 https://dev.yijianar.com:8441/SGSI_Prediction
+```
+参数 Do为管片外径，Di为管片内径，Dc为刀盘直径
 
 # 后端开发
 ## 购买配置云服务器和域名
@@ -56,7 +63,7 @@ sudo apt install nginx
 sudo apt install mysql-server
 ```
 ## 装机
-Nvidia RTX显卡驱动安装
+Nvidia RTX显卡驱动安装  
 CUDA 深度学习环境安装
 ## 安装网络服务
 ```shell
