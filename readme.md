@@ -29,7 +29,7 @@ curl -X POST -d '{"filepath":"/data/csv_6/aaa_train.csv"}' https://dev.yijianar.
 curl -X POST -d '{"filepath":"/pics/abc_evaluate.jpg"}' https://dev.yijianar.com:8441/file
 ```
 ## 进度查询
-开始训练/评价任务后，前端作5秒一次的进度轮询。当进度为100%时停止轮询。
+开始训练/评价任务后，前端作2秒一次的进度轮询。当进度为100%时停止轮询。
 ```shell
 # 训练进度
 curl -X POST -d '{"project_name":"aaa","task":"train"}' https://dev.yijianar.com:8441/progress
@@ -47,7 +47,11 @@ curl -F filename=@pingjia.csv -F project_name=abc https://dev.yijianar.com:8441/
 ```shell
 sudo apt install redis-server
 sudo apt install nginx
+sudo apt install mysql-server
 ```
+## 装机
+Nvidia RTX显卡驱动安装
+CUDA 深度学习环境安装
 ## 安装网络服务
 ```shell
 sudo apt install trojan
@@ -63,6 +67,7 @@ python3 -m venv venv
 . venv/bin/activate
 pip install -r requirements.txt
 ```
+## 数据录入
 
 # 前端开发
 ## 安装node环境
