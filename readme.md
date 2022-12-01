@@ -16,6 +16,12 @@ curl -X POST -d '{"email":"guozheng_huang@163.com","emailcode":"643350","passwor
 ```shell
 curl -X POST -d '{"email":"guozheng_huang@163.com","password":"123456"}' http://localhost:9000/email_login
 ```
+## 工程数据列表
+```shell
+curl http://sh1.cirray.cn:9000/projects
+```
+字段英文名分别对应: ID,工程名,施工单位,穿越地层,区间长度(m),起止时间,盾构类型,盾构厂家/型号,土仓压力(MPa),刀盘转速(r/min),扭矩(kN.m),推力(kN),推进速度(mm/min),土体改良,保压泵,双闸门,耐磨措施,平均进度(m/d),刀具磨损,盾构直径(m),盾构埋深(m),稠度指数,开挖面水头(m),渗透系数(cm/s),等效石英含量(%),限制粒径(mm),最大粒径(mm)  
+其中, [土仓压力,刀盘转速,扭矩,推力,推进速度] 合为 运行参数. [土体改良,保压泵,双闸门,耐磨措施] 合为 施工措施, [平均进度,刀具磨损] 合为 施工效果。
 ## 训练模型(预处理)
 ```shell
 curl -F filename=@abc_train.csv -F project_name=aaa https://dev.yijianar.com:8441/Upload_Train
