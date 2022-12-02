@@ -67,3 +67,6 @@ INSERT INTO project(id,name,constru,ground,length,period,shield_type,manufac_mod
 INSERT INTO project(id,name,constru,ground,length,period,shield_type,manufac_model,soil_pressure,cutter_speed,torque,thrust,advance_speed,soil_improvement,pressure_pump,double_gate,wear_resistant,average_progress,tool_wear) VALUES(22,"深圳地铁9号线红岭站~红岭南站","中建交通建设集团有限公司",2,776,"","土压","海瑞克/ S472","","1.3~1.5","2300~2800","12000~16000","30~40","采用泡沫及膨润土泥浆进行改良","无","无","无",5.3,"中度磨损");
 INSERT INTO project(id,name,constru,ground,length,period,shield_type,manufac_model,soil_pressure,cutter_speed,torque,thrust,advance_speed,soil_improvement,pressure_pump,double_gate,wear_resistant,average_progress,tool_wear) VALUES(23,"深圳地铁9号线红岭南站~鹿丹村站","中建交通建设集团有限公司",2,459,"","土压","卡特彼勒","","1.1~1.4","1500~3000","10000~15000","25~35","采用泡沫及膨润土泥浆进行改良","无","无","无",5,"中度磨损");
 INSERT INTO project(id,name,constru,ground,length,period,shield_type,manufac_model,soil_pressure,cutter_speed,torque,thrust,advance_speed,soil_improvement,pressure_pump,double_gate,wear_resistant,average_progress,tool_wear) VALUES(24,"深圳地铁11号线车公庙站~红树湾站","中铁隧道集团",2,5500,"2013.05~2014.09","土压","中铁装备/CTE6950","","0.9~1.5","2000","20000","30~50","采用泡沫及膨润土泥浆进行改良，泡沫原液比例1%，注入比30%；膨润土泥浆注入比为5%","无","无","无",12,"中度磨损");
+
+alter table project add column province varchar(16);
+ 
