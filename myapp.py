@@ -2,7 +2,7 @@ from aiohttp import web
 import aiohttp_cors
 
 from account import send_code_email, email_register, email_login
-from project import projects
+from project import projects, projects_search
 
 async def helloworld(request):
     if request.body_exists:
@@ -18,6 +18,7 @@ app.add_routes([web.get('/helloworld',helloworld),
                 web.post('/email_register',email_register),
                 web.post('/email_login',email_login),
                 web.get('/projects',projects),
+                web.post('/projects_search',projects_search),
 
 ])
 
