@@ -30,6 +30,16 @@ curl -X POST -d '{"shield_diameter":"6.14"}' http://sh1.cirray.cn:9000/projects_
 都是非必需  
 都改成文字搜索框  
 注意，厂家和型号只要一个就行，就是manufac_model, 改成厂家型号
+## 数据导入
+```shell
+curl -F projects=@myprojects.xlsx http://localhost:9000/projects_import
+```
+## 数据导出
+```shell
+curl http://localhost:9000/projects_export
+```
+是二进制流，需要前端做另存为工作
+
 ## 训练模型(预处理)
 ```shell
 curl -F filename=@abc_train.csv -F project_name=aaa https://dev.yijianar.com:8441/Upload_Train
