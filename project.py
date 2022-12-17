@@ -74,3 +74,80 @@ async def projects_import(request):
     conn.close()
     
     return web.Response(text="OK")
+
+
+async def projects_add(request):
+    data = await request.json()
+    name = data["name"]
+    constru = data["constru"] if "constru" in data else ""
+    ground = data["ground"] if "ground" in data else 2 
+    length = data["length"]
+    period = data["period"] if "period" in data else ""
+    shield_type = data["shield_type"] if "shield_type" in data else ""
+    manufac_model = data["manufac_model"] if "manufac_model" in data else ""
+    soil_pressure = data["soil_pressure"] if "soil_pressure" in data else ""
+    cutter_speed = data["cutter_speed"] if "cutter_speed" in data else ""
+    torque = data["torque"] if "torque" in data else ""
+    thrust = data["thrust"] if "thrust" in data else ""
+    advance_speed = data["advance_speed"] if "advance_speed" in data else ""
+    soil_improvement = data["soil_improvement"] if "soil_improvement" in data else "无"
+    pressure_pump = data["pressure_pump"] if "pressure_pump" in data else "无"
+    double_gate = data["double_gate"] if "double_gate" in data else "无"
+    wear_resistant = data["wear_resistant"] if "wear_resistant" in data else "无"
+    average_progress = data["average_progress"] if "average_progress" in data else "NULL"
+    tool_wear = data["tool_wear"] if "tool_wear" in data else ""
+    shield_diameter = data["shield_diameter"] if "shield_diameter" in data else "NULL"
+    shield_depth = data["shield_depth"] if "shield_depth" in data else ""
+    consistency_index = data["consistency_index"] if "consistency_index" in data else "NULL"
+    excavation_head = data["excavation_head"] if "excavation_head" in data else "NULL"
+    permeability = data["permeability"] if "permeability" in data else "NULL"
+    equivalent_quartz = data["equivalent_quartz"] if "equivalent_quartz" in data else "NULL"
+    restricted_particle = data["restricted_particle"] if "restricted_particle" in data else "NULL"
+    max_particle = data["max_particle"] if "max_particle" in data else "NULL"
+    province = data["province"] if "province" in data else ""
+    pics = data["pics"] if "pics" in data else []
+
+    pics_str = ";".join(pics)
+    print(pics_str)
+
+    conn = await aiomysql.connect(**mysqlconfig)
+    cur = await conn.cursor()
+    sql = f"INSERT INTO project (name,constru,ground,length,period,shield_type,manufac_model,soil_pressure,cutter_speed,torque,thrust,advance_speed,soil_improvement,pressure_pump,double_gate,wear_resistant,average_progress,tool_wear,shield_diameter,shield_depth,consistency_index,excavation_head,permeability,equivalent_quartz,restricted_particle,max_particle,province,pics) VALUES ('{name}','{constru}',{ground},{length},'{period}','{shield_type}','{manufac_model}','{soil_pressure}','{cutter_speed}','{torque}','{thrust}','{advance_speed}','{soil_improvement}','{pressure_pump}','{double_gate}','{wear_resistant}',{average_progress},'{tool_wear}',{shield_diameter},'{shield_depth}',{consistency_index},{excavation_head},{permeability},{equivalent_quartz},{restricted_particle},{max_particle},'{province}','{pics}')"
+    print(sql)
+    await cur.execute(sql)
+    await conn.commit()
+    conn.close()
+
+    return web.Response(text="增加成功")
+
+async def projects_delete(request):
+    data = await request.json()
+    ids = data["ids"]
+    conn = await aiomysql.connect(**mysqlconfig)
+    cur = await conn.cursor()
+    if len(ids)==1:
+        sql = f"DELETE FROM project WHERE id={ids[0]}"
+    else:
+        sql = f"DELETE FROM project WHERE id in {tuple(ids)}"
+    print(sql)
+    await cur.execute(sql)
+    await conn.commit()
+    conn.close()
+
+    return web.Response(text="删除成功")
+
+async def projects_update(request):
+    data = await request.json()
+    pics = data['pics'] if 'pics' in data else []
+    pics_str = ";".join(pics)
+    conn = await aiomysql.connect(**mysqlconfig)
+    cur = await conn.cursor()
+    sql = f'''UPDATE project set name="{data['name']}",constru="{data['constru']}",ground={data['ground']},length={data['length']},period="{data['period']}",shield_type="{data['shield_type']}",manufac_model="{data['manufac_model']}",soil_pressure="{data['soil_pressure']}",cutter_speed="{data['cutter_speed']}",torque="{data['torque']}",thrust="{data['thrust']}",advance_speed="{data['advance_speed']}",soil_improvement="{data['soil_improvement']}",pressure_pump="{data['pressure_pump']}",double_gate="{data['double_gate']}",wear_resistant="{data['wear_resistant']}",average_progress={data['average_progress']},tool_wear="{data['tool_wear']}",shield_diameter={data['shield_diameter']},shield_depth="{data['shield_depth']}",consistency_index={data['consistency_index']},excavation_head={data['excavation_head']},permeability={data['permeability']},equivalent_quartz={data['equivalent_quartz']},restricted_particle={data['restricted_particle']},max_particle={data['max_particle']},province="{data['province']}",pics="{pics_str}" WHERE id={data['id']}'''
+    print(sql)
+    await cur.execute(sql)
+    await conn.commit()
+    conn.close()
+
+    return web.Response(text="更新成功")
+
+

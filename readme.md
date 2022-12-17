@@ -40,6 +40,21 @@ curl http://localhost:9000/projects_export
 ```
 是二进制流，需要前端做另存为工作
 
+## 新增一条数据
+```shell
+curl -X POST -d '{"name":"测试工程","length":1000}' http://localhost:9000/projects_add
+```
+name和length为必需，其他参数为空时可以不传。
+## 删除多条数据
+```
+curl -X POST -d '{"ids":[25,26]}' http://localhost:9000/projects_delete 
+curl -X POST -d '{"ids":[27]}' http://localhost:9000/projects_delete
+```
+## 更新一条数据
+```
+curl -X POST -d '{"id":28,"name":"改后名字","constru":"曦辉","ground":2,"length":1000,"period":"12~13","shield_type":"测试类型","manufac_model":"测试型号","soil_pressure":"abc","cutter_speed":"100~200","torque":"20~30","thrust":"asdh","advance_speed":"50~60","soil_improvement":"有","pressure_pump":"djs","double_gate":"有","wear_resistant":"有","average_progress":10,"tool_wear":"有","shield_diameter":40,"shield_depth":"10~20","consistency_index":10,"excavation_head":5,"permeability":0.01,"equivalent_quartz":80,"restricted_particle":100,"max_particle":200,"province":"浙江","pics":["http://hello.com/a.png"]}' http://localhost:9000/projects_update
+```
+
 ## 训练模型(预处理)
 ```shell
 curl -F filename=@abc_train.csv -F project_name=aaa https://dev.yijianar.com:8441/Upload_Train
