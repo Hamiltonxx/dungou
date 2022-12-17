@@ -11,7 +11,10 @@ async def projects(request):
     d = await cur.fetchall()
     result = []
     for p in d:
-        result.append(dict(zip(prjcolumns,p)))
+        dt = dict(zip(prjcolumns,p))
+        pics_str = dt["pics"]
+        dt["pics"] = pics_str.split(";")
+        result.append(dt)
     conn.close()
     return web.Response(text=json.dumps(result, ensure_ascii=False))
 
@@ -44,7 +47,7 @@ async def projects_export(request):
     # with open("projects_export.xlsx",'wb+') as f:
     wb = Workbook()
     sheet = wb.active
-    sheet.append(("ID","工程名","施工单位","穿越地层","区间长度(m)","起止时间","盾构类型","盾构厂家/型号","土仓压力(MPa)","刀盘转速(r/min)","扭矩(kN.m)","推力(kN)","推进速度(mm/min)","土体改良","保压泵","双闸门","耐磨措施","平均进度(m/d)","刀具磨损","盾构直径(m)","盾构埋深(m)","稠度指数","开挖面水头(m)","渗透系数(cm/s)","等效石英含量(%)","限制粒径(mm)","最大粒径(mm)","省份"))
+    sheet.append(("ID","工程名","施工单位","穿越地层","区间长度(m)","起止时间","盾构类型","盾构厂家/型号","土仓压力(MPa)","刀盘转速(r/min)","扭矩(kN.m)","推力(kN)","推进速度(mm/min)","土体改良","保压泵","双闸门","耐磨措施","平均进度(m/d)","刀具磨损","盾构直径(m)","盾构埋深(m)","稠度指数","开挖面水头(m)","渗透系数(cm/s)","等效石英含量(%)","限制粒径(mm)","最大粒径(mm)","省份","图片"))
     conn = await aiomysql.connect(**mysqlconfig)
     cur = await conn.cursor()
     await cur.execute("SELECT * FROM project")
