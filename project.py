@@ -20,7 +20,7 @@ async def projects(request):
 
 async def projects_search(request):
     data = await request.json()
-    ground = data['ground'] if "groud" in data else 2
+    ground = data['ground'] if "ground" in data else 2
     shield_depth = data['shield_depth'] if "shield_depth" in data else ''
     shield_diameter = data['shield_diameter'] if "shield_diameter" in data else ''
     manufac_model = data['manufac_model'] if "manufac_model" in data else ''
