@@ -69,4 +69,8 @@ INSERT INTO project(id,name,constru,ground,length,period,shield_type,manufac_mod
 INSERT INTO project(id,name,constru,ground,length,period,shield_type,manufac_model,soil_pressure,cutter_speed,torque,thrust,advance_speed,soil_improvement,pressure_pump,double_gate,wear_resistant,average_progress,tool_wear) VALUES(24,"深圳地铁11号线车公庙站~红树湾站","中铁隧道集团",2,5500,"2013.05~2014.09","土压","中铁装备/CTE6950","","0.9~1.5","2000","20000","30~50","采用泡沫及膨润土泥浆进行改良，泡沫原液比例1%，注入比30%；膨润土泥浆注入比为5%","无","无","无",12,"中度磨损");
 
 alter table project add column province varchar(16);
- 
+alter table project add column pics varchar(16);
+
+alter table project add cutter_dia DOUBLE,add cutter_type VARCHAR(16),add open_ratio FLOAT,add yuwei INT,add xianxing INT,add qiexiao INT,add guadao INT,add chaowa INT,add driver VARCHAR(16),add max_rotating FLOAT,add rated_torque INT,add break_torque INT,add foam INT,add bentonite INT,add max_thrust INT,add max_advance INT,add screw_type VARCHAR(16),add screw_dia FLOAT,add max_size VARCHAR(16),add max_capac FLOAT,add screw_tor FLOAT,add screw_speed FLOAT;
+alter table project add shuangren INT after chaowa;
+alter table project add danren INT after shuangren;
